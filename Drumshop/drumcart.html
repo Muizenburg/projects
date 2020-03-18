@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/foundation/5.0.2/css/foundation.css'>
+  <link rel="stylesheet" href="style.css">
+
+  <title>Cart</title>
+</head>
+
+<body onload="cartTotalSaved()">
+  <div class="nav">
+    <ul>
+      <li class="home"><a href="drumhome.html">Home</a></li>
+      <li class="about">
+        <a class="active" href="drumabout.html">About me</a>
+      </li>
+      <li class="catalogue"><a href="drumcatalogue.html">Catalogue</a></li>
+      <li class="cart"><a href="drumcart.html">Cart</a></li>
+      <li class="contact"><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="cart">
+    <h1>Cart items</h1>
+    <button class="tiny secondary" id="clear">Clear the cart</button>
+  </div>
+  <button class="tiny disabled" title="Work in progress">Checkout</button>
+  </div>
+  </div>
+  <div id="cartItems">Loading cart...</div>
+
+  <br>
+  <!-- <form name="discount" onsubmit="discount()">
+    Discount coupon code: <br>(use "halfprice" for 50% off)
+    <input type="text">
+  </form> -->
+
+  <p> Your cart total is: <div id="cartTotalSaved"></div> </p>
+
+  Enter your discount code here (type "50%"):
+  <form onsubmit="">
+    <label style="width:50px;"><input type="text" name="coupon" id="in" class="coupon" title="Enter coupon">
+      <span id="usernameError"></span></label>
+    <input type="button" value="Submit" onclick="validate(coupon), cartTotalPostDisc()" id="discount" />
+  </form>
+
+  <span id="message"></span>
+  <span id="err"></span>
+  <br> <br>
+  <p class="display"> Your cart total after discount is: <div id="cartTotalPostDisc"></div> </p>
+
+  <form>
+    Delivery option:
+    <select id="deliveryOption" onchange="cartTotalPostDiscAndDel()">
+      <option value="none">--</option>
+      <option value="collection">Collection (FREE)</option>
+      <option value="courier">Courier (Addtional R50 charge)</option>
+    </select>
+  </form>
+
+  <p class="display"> Your cart total after discount and delivery fee is: <div id="cartTotalPostDiscAndDel"></div> </p>
+
+  <button onclick="finalPrice(),grandTotalVat()">Calculate total price</button> <br>
+  Vat @ 15%: <strong id="vat"> </strong> <br>
+  Total price: <strong id="grandTotalPrice"></strong>
+
+  <p id="ordernote">Order is incomplete</p>
+  </div>
+  </div>
+
+
+
+  <script type="text/template" id="cartT">
+      <% _.each(items, function (item) { %> <div class = "panel"> <h3> <%= item.name %> </h3>  <span class="label">
+    <%= item.count %> piece<% if(item.count > 1)
+    {%>s
+    <%}%> for R<%= item.total %></span > </div>
+    <% }); %>
+    </script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js'></script>
+  <script src="function.js"></script>
+
+</body>
+
+</html>
