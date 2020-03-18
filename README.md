@@ -15,7 +15,7 @@ Pull the files and read them using your coding editor
 
 ### 3. Usage: 
 Select a product and add it to your cart from the catalogue page to test, the cart contents will carry over once the page of the website has changed to "cart".
-![drumshop catalogue](images/drum-shop.jpg)
+![drumshop catalogue](images/drum-shop.JPG)
 
 ### 4. Credits
 github username: Muizenburg
